@@ -5,7 +5,7 @@ import OriginAxios from 'axios';
 const axios = OriginAxios.create({
     timeout: 30 * 1000,
     withCredentials: true,
-    xsrfCookieName: 'imeCsrfToken',
+    xsrfCookieName: 'iuvCsrfToken',
     xsrfHeaderName: 'x-csrf-token',
 });
 

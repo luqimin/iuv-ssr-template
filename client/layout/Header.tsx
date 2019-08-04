@@ -76,4 +76,4 @@ class IUVHeader extends React.Component<InjectedProps, any> {
     }
 }
 
-export default withRouter<RouteComponentProps<{}>>(IUVHeader);
+export default withRouter<RouteComponentProps<{}>, any>(IUVHeader);

@@ -31,4 +31,4 @@ class IUVContent extends React.PureComponent<RouteComponentProps<{}>, any> {
     }
 }
 
-export default withRouter<RouteComponentProps<{}>>(IUVContent);
+export default withRouter<RouteComponentProps<{}>, any>(IUVContent);
