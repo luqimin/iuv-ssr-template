@@ -1,0 +1,93 @@
+@import '~antd/lib/style/themes/default.less';
+
+@tagHeight: 34px;
+@tagLineHeight: @tagHeight - 2px;
+@tagColor: #6f6f6f;
+@tagBgColor: #f7f7f7;
+
+.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .input {
+        width: 100px;
+        height: @tagHeight;
+        line-height: @tagLineHeight;
+    }
+
+    .tags {
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .tips {
+        font-size: 12px;
+        color: #bfbfbf;
+    }
+}
+
+.tag {
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    height: @tagHeight;
+    line-height: @tagLineHeight;
+    color: @tagColor;
+    background: @tagBgColor;
+    border-color: transparent;
+    font-size: 14px;
+
+    .dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border: 2px solid #74bcff;
+        border-radius: 50%;
+    }
+
+    .text {
+        margin: 0 4px;
+        display: inline-block;
+        padding: 0 7px 0 4px;
+        line-height: @input-height-sm;
+        cursor: text;
+        transition: all @animation-duration-base;
+
+        &:hover {
+            background: @input-bg;
+            border: 1px solid @border-color-base;
+            border-radius: @border-radius-base;
+        }
+    }
+
+    .editInput {
+        margin: 0 10px 0 8px;
+        width: 80px;
+    }
+
+    .close {
+        display: inline-block;
+        color: #dadada;
+        width: 12px;
+        height: 12px;
+        cursor: pointer;
+    }
+
+    :global(.anticon-close) {
+        border-radius: 50%;
+        background-color: #dadada;
+    }
+}
+
+.new {
+    height: @tagHeight;
+    line-height: @tagLineHeight;
+    padding: 0 12px;
+    color: @tagColor;
+    background: @tagBgColor;
+    border-color: transparent;
+    font-size: 14px;
+}

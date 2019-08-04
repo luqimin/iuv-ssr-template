@@ -1,0 +1,72 @@
+{
+  "name": "iuv-ssr-template",
+  "version": "1.0.0",
+  "description": "iuv isomorphic demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "i start",
+    "build": "i build --env p",
+    "p": "eggctl start ./build/server --workers=1 --port=3000",
+    "test": "mocha"
+  },
+  "egg": {
+    "typescript": true,
+    "declarations": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luqimin/iuv-ssr-template.git"
+  },
+  "keywords": [
+    "iuv",
+    "isomorphic",
+    "template"
+  ],
+  "author": "luqimin",
+  "license": "ISC",
+  "dependencies": {
+    "@iuv/cli": "^1.0.0",
+    "@iuv/ssr-kit": "^1.0.0",
+    "@loadable/babel-plugin": "5.10.0",
+    "@loadable/component": "5.10.2",
+    "@loadable/server": "5.10.2",
+    "@loadable/webpack-plugin": "5.7.1",
+    "@types/classnames": "^2.2.9",
+    "@types/fs-extra": "^8.0.0",
+    "@types/js-cookie": "^2.2.2",
+    "@types/koa-static": "^4.0.1",
+    "@types/loadable__component": "^5.10.0",
+    "@types/loadable__server": "^5.9.1",
+    "@types/lodash": "^4.14.136",
+    "@types/react": "^16.8.24",
+    "@types/react-dom": "^16.8.5",
+    "@types/react-router": "^5.0.3",
+    "@types/react-router-dom": "^4.3.4",
+    "antd": "3.20.7",
+    "axios": "0.19.0",
+    "classnames": "2.2.6",
+    "egg": "2.23.0",
+    "egg-redis": "2.4.0",
+    "egg-scripts": "2.11.0",
+    "egg-session-redis": "2.1.0",
+    "fs-extra": "8.1.0",
+    "js-cookie": "2.2.0",
+    "koa-static": "5.0.0",
+    "lodash": "4.17.15",
+    "mobx": "5.13.0",
+    "mobx-react": "6.1.1",
+    "moment": "2.24.0",
+    "path-to-regexp": "3.0.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router": "5.0.1",
+    "react-router-dom": "5.0.1",
+    "react-router-scroll-memory": "2.0.3",
+    "reflect-metadata": "0.1.13"
+  },
+  "devDependencies": {
+    "iuv-egg-ts-helper": "^1.0.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  }
+}

@@ -1,0 +1,174 @@
+@import '~antd/lib/style/themes/default.less';
+@import '../style/var.less';
+
+@header-text-color: #c7c9cf;
+
+.header {
+    position: relative;
+    display: flex;
+    width: 100%;
+    color: @header-text-color;
+    padding: 0;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+}
+
+.wrap {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: @page-width;
+    height: @layout-header-height;
+
+    .menu {
+        line-height: 62px;
+        background: transparent;
+        border-bottom: none;
+
+        .menuItem {
+            .link {
+                color: @header-text-color;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+
+        :global(.ant-menu-item-selected) {
+            .link {
+                color: #fff;
+            }
+        }
+
+        .btn {
+            float: right;
+        }
+    }
+}
+
+.contentWrap {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: @page-width;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.right {
+    height: 100%;
+    overflow: hidden;
+}
+
+.login {
+    float: right;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+
+    .btn {
+        float: right;
+
+        a {
+            color: #a8a8a8;
+            font-size: 12px;
+
+            &:hover {
+                color: #ff6d10;
+            }
+        }
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 16px;
+    color: #fff;
+
+    &:focus {
+        text-decoration: none;
+    }
+
+    &:hover {
+        color: #fff;
+    }
+
+    .img {
+        margin-right: 7px;
+        display: inline-block;
+        width: 31px;
+        height: 31px;
+        background-image: url("../assets/logo.png");
+        background-image: image-set(
+            url("../assets/logo.png") 1x,
+            url("../assets/logo@2x.png") 2x,
+            url("../assets/logo@3x.png") 3x
+        );
+        background-size: cover;
+    }
+}
+
+.user {
+    float: right;
+    height: 100%;
+
+    .action {
+        margin-left: 12px;
+        display: inline-block;
+        cursor: pointer;
+        transition: all .3s;
+
+        > i {
+            font-size: 16px;
+            vertical-align: middle;
+        }
+    }
+
+    .avatar {
+        margin-right: 10px;
+    }
+
+    .username {
+        margin-right: 8px;
+    }
+}
+
+.content {
+    margin: 33px 0;
+}
+
+.breadcrumb {
+    a {
+        text-decoration: none;
+    }
+}
+
+.main {
+    margin: 0;
+    display: flex;
+}
+
+.footer {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #b9b9b9;
+    background: transparent;
+
+    &.fixBottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto 50px;
+    }
+}

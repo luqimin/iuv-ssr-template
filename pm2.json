@@ -1,0 +1,27 @@
+{
+    "apps": {
+        "name": "index",
+        "script": "./build/server/index.js",
+        "exec_mode": "cluster",
+        "instances": 2,
+        "watch": false,
+        "env": {
+            "DEBUG": "iuv-server,log*",
+            "DEBUG_HIDE_DATE": true,
+            "NODE_ENV": "production"
+        },
+        "env_development": {
+            "DEBUG": "iuv-server,log*",
+            "NODE_ENV": "development"
+        },
+        "env_testing": {
+            "DEBUG": "iuv-server,log*",
+            "NODE_ENV": "testing"
+        },
+        "error_file": "./logs/pm2_err.log",
+        "out_file": "/dev/null",
+        "merge_logs": true,
+        "ignore_watch": ["logs", "build", "cache_files"],
+        "log_date_format": "YYYY-MM-DD HH:mm:ss"
+    }
+}

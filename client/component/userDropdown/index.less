@@ -1,0 +1,99 @@
+@lightFontColor: #979eb1;
+@darkFontColor: #c7c9cf;
+
+.wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    float: right;
+
+    &.light {
+        color: @lightFontColor;
+    }
+
+    &.dark {
+        color: @darkFontColor;
+
+        .dropdown {
+            background-color: #424859;
+
+            :hover {
+                background-color: rgba(0, 0, 0, .1);
+            }
+        }
+    }
+}
+
+.account {
+    .avatar {
+        margin-right: 10px;
+    }
+
+    .username {
+        margin-right: 8px;
+        display: inline-block;
+    }
+}
+
+.dropdown {
+    top: 60px !important;
+    width: 160px;
+}
+
+.menu {
+    padding: 0;
+    text-align: center;
+    border-radius: 0;
+
+    :global {
+        .ant-dropdown-menu-item,
+        .ant-dropdown-menu-submenu-title {
+            padding: 12px 12px;
+        }
+    }
+
+    &.dark {
+        color: #c7c9cf;
+        background-color: #424859;
+
+        :hover {
+            color: #c7c9cf !important;
+            background-color: rgba(0, 0, 0, .1);
+        }
+    }
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 43px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 40px;
+    text-align: center;
+    color: #6f6f6f;
+
+    .img {
+        margin-right: 8px;
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        background-image: url("../../assets/homelogo.png");
+        background-image: image-set(
+            url("../../assets/homelogo.png") 1x,
+            url("../../assets/homelogo@2x.png") 2x,
+            url("../../assets/homelogo@3x.png") 3x
+        );
+        background-size: cover;
+    }
+}
+
+.login {
+    margin: 25px 24px;
+
+    .submit {
+        height: 48px;
+        font-size: 18px;
+    }
+}
