@@ -8,10 +8,10 @@ module.exports = {
 
     commands: {
         start: {
-            package: '@iuv/ssr-kit/lib/dev-server',
+            package: '@iuv/ssr-kit/build/dev-server',
         },
         build: {
-            package: '@iuv/ssr-kit/lib/build',
+            package: '@iuv/ssr-kit/build/build',
         },
     },
 
