@@ -1,10 +1,6 @@
-FROM node:lts-alpine
+FROM luqimin/iuv-ssr:lts-alpine
 
 LABEL maintainer="luqimin"
-
-RUN apk --no-cache add tzdata  && \
-    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo "Asia/Shanghai" > /etc/timezone
 
 ENV NODE_ENV $NODE_ENV
 ENV EGG_SERVER_ENV $EGG_SERVER_ENV
