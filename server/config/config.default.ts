@@ -22,7 +22,7 @@ export default (appInfo: EggAppInfo) => {
             },
         },
 
-        middleware: ['auth', 'context', 'exception'],
+        middleware: ['auth', 'context'],
 
         logger: {
             dir: path.join(__dirname, '../../../logs'),
