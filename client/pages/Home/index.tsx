@@ -18,7 +18,10 @@ class Home extends React.Component<Props> {
             <div className={styles.container}>
                 <div className={styles.main}>
                     <p>下了一整夜的雨, 早起就是好天气</p>
-                    <p>用户信息: {JSON.stringify(account)}</p>
+                    <p>
+                        用户信息:
+                        {JSON.stringify(account)}
+                    </p>
                 </div>
             </div>
         );

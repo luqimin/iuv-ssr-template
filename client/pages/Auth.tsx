@@ -25,7 +25,7 @@ interface State {
 class Auth extends React.Component<Props, State> {
     state = { hasError: false };
 
-    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    componentDidCatch(error: Error) {
         const loadChunkErrorReg = /.*Loading.*chunk.*/;
         if (loadChunkErrorReg.test(error.message)) {
             window.location.reload();

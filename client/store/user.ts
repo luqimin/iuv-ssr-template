@@ -4,7 +4,7 @@
 
 import { LOGOUT } from '@const/url';
 import { get } from '@utils/fetch';
-import { action, observable } from 'mobx';
+import { observable } from 'mobx';
 
 import Abstract from './Abstract';
 
@@ -13,7 +13,7 @@ export default class UserStore extends Abstract {
 
     constructor(data?: { data: GLOBAL_USER; loaded: boolean }) {
         super();
-        data && data.loaded && this.initData(data.data);
+        data?.loaded && this.initData(data.data);
     }
 
     initData(data: GLOBAL_USER) {
@@ -23,12 +23,11 @@ export default class UserStore extends Abstract {
         }
     }
 
-    logout() {
-        return get(LOGOUT).then((res: any) => {
-            if (res && res.code === 0) {
-                this.data = null;
-                this.loaded = false;
-            }
-        });
+    async logout() {
+        const res = await get(LOGOUT);
+        if (res && res.code === 0) {
+            this.data = null;
+            this.loaded = false;
+        }
     }
 }

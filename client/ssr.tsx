@@ -4,7 +4,7 @@ import { find } from 'lodash';
 import { toJS } from 'mobx';
 import { Provider } from 'mobx-react';
 import * as path from 'path';
-import * as pathToRegexp from 'path-to-regexp';
+import { pathToRegexp } from 'path-to-regexp';
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router';
@@ -17,12 +17,7 @@ import getRootStore from './store';
 // iuv动态生成的文件
 const statsFile = path.resolve('./build/server/ssr/loadable-stats.json');
 
-export default async (
-    ctx: Context,
-    context: any,
-    rootStore: any,
-    fetchStore: { [key: string]: (param?: string) => Promise<any> }
-) => {
+export default async (ctx: Context, context: any, rootStore: any, fetchStore: { [key: string]: (param?: string) => Promise<any> }) => {
     // 获取mobx store
     const stores = getRootStore({});
 
@@ -43,20 +38,17 @@ export default async (
     }
 
     // 初始化所有的store
-    for (let i = 0; i < preFetchStores.length; i++) {
-        const key = preFetchStores[i].name;
-        const param = preFetchStores[i].param;
-        if ((stores as any)[key]) {
-            const _store = (stores as any)[key];
-            const fetchFunc = fetchStore[key];
-            if (fetchFunc) {
-                const res = await fetchFunc(param);
-                if (res.code === 0) {
-                    _store.initData(res.data, param);
-                }
-            }
-        }
-    }
+    const fetchStorePromises = preFetchStores.map((s) => {
+        const key = s.name;
+        const _store = stores[key];
+        return _store ? fetchStore[key]?.(s.param) || Promise.resolve(null) : Promise.resolve(null);
+    });
+    const fetchRes = await Promise.all(fetchStorePromises);
+    preFetchStores.forEach((s, i) => {
+        const key = s.name;
+        const _store = stores[key];
+        _store?.initData(fetchRes[i].data, s.param);
+    });
 
     Object.assign(rootStore, toJS(stores));
 

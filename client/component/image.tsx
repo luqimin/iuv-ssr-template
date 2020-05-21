@@ -8,6 +8,7 @@ export interface ImagesProps {
      * 图片src
      */
     src: string;
+    alt?: string;
 
     style?: any;
     className?: string;
@@ -26,22 +27,20 @@ export default class Image extends React.PureComponent<ImagesProps> {
         error: false,
     };
 
-    handleError = (event: any) => {
+    handleError = () => {
         this.setState({ error: true });
-    }
+    };
 
     render() {
-        const error = this.state.error;
+        const { error } = this.state;
+        const { className, style, alt, ...rest } = this.props;
 
         return (
             <div style={{ display: 'flex' }}>
                 {error ? (
-                    <div
-                        className={this.props.className}
-                        style={{ borderRadius: '50%', backgroundColor: '#ccc', ...this.props.style }}
-                    />
+                    <div className={this.props.className} style={{ borderRadius: '50%', backgroundColor: '#ccc', ...this.props.style }} />
                 ) : (
-                    <img {...this.props} onError={this.handleError} />
+                    <img {...rest} alt={alt} onError={this.handleError} />
                 )}
             </div>
         );

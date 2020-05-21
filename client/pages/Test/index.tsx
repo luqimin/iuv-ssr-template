@@ -8,7 +8,12 @@ interface Props {
 
 class Test extends React.PureComponent<Props, any> {
     render() {
-        return <div className={styles.container}>TEST: {this.props.testProp || '~~~'}</div>;
+        return (
+            <div className={styles.container}>
+                TEST:
+                {this.props.testProp || '~~~'}
+            </div>
+        );
     }
 }
 

@@ -34,6 +34,7 @@ module.exports = {
      * less变量替换 modifyVars配置
      */
     lessModifyVars: {
+        '@page-width': '1200px',
         '@primary-color': '#fa7241',
         '@info-color': '#fa7241',
         '@processing-color': '#56a9ff',

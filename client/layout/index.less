@@ -1,39 +1,28 @@
 @import '~antd/lib/style/themes/default.less';
-@import '../style/var.less';
 
 @header-text-color: #c7c9cf;
 
 .header {
-    position: relative;
     display: flex;
+    position: relative;
+    padding: 0;
     width: 100%;
     color: @header-text-color;
-    padding: 0;
-    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 }
 
 .wrap {
-    margin: auto;
     display: flex;
-    justify-content: space-between;
+    margin: auto;
     width: 100%;
     max-width: @page-width;
     height: @layout-header-height;
+    justify-content: space-between;
 
     .menu {
+        border-bottom: 0;
         line-height: 62px;
         background: transparent;
-        border-bottom: none;
-
-        .menuItem {
-            .link {
-                color: @header-text-color;
-
-                &:hover {
-                    color: #fff;
-                }
-            }
-        }
 
         :global(.ant-menu-item-selected) {
             .link {
@@ -45,14 +34,24 @@
             float: right;
         }
     }
+
+    .menuItem {
+        .link {
+            color: @header-text-color;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
 }
 
 .contentWrap {
-    margin: auto;
     display: flex;
-    flex-direction: column;
+    margin: auto;
     width: 100%;
     max-width: @page-width;
+    flex-direction: column;
 }
 
 .left {
@@ -61,22 +60,22 @@
 }
 
 .right {
-    height: 100%;
     overflow: hidden;
+    height: 100%;
 }
 
 .login {
     float: right;
-    height: 100%;
     overflow: hidden;
     width: 100%;
+    height: 100%;
 
     .btn {
         float: right;
 
         a {
-            color: #a8a8a8;
             font-size: 12px;
+            color: #a8a8a8;
 
             &:hover {
                 color: #ff6d10;
@@ -101,16 +100,12 @@
     }
 
     .img {
-        margin-right: 7px;
         display: inline-block;
+        margin-right: 7px;
         width: 31px;
         height: 31px;
-        background-image: url("../assets/logo.png");
-        background-image: image-set(
-            url("../assets/logo.png") 1x,
-            url("../assets/logo@2x.png") 2x,
-            url("../assets/logo@3x.png") 3x
-        );
+        background-image: url('../assets/logo.png');
+        background-image: image-set(url('../assets/logo.png') 1x, url('../assets/logo@2x.png') 2x, url('../assets/logo@3x.png') 3x);
         background-size: cover;
     }
 }
@@ -120,10 +115,10 @@
     height: 100%;
 
     .action {
-        margin-left: 12px;
         display: inline-block;
+        margin-left: 12px;
+        transition: all 0.3s;
         cursor: pointer;
-        transition: all .3s;
 
         > i {
             font-size: 16px;
@@ -151,24 +146,24 @@
 }
 
 .main {
-    margin: 0;
     display: flex;
+    margin: 0;
 }
 
 .footer {
-    margin-top: 60px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 60px;
     font-size: 12px;
     color: #b9b9b9;
     background: transparent;
+    justify-content: center;
+    align-items: center;
 
     &.fixBottom {
         position: absolute;
+        right: 0;
         bottom: 0;
         left: 0;
-        right: 0;
         margin: 0 auto 50px;
     }
 }

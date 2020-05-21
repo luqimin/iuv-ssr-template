@@ -5,7 +5,7 @@
 import { Context } from 'egg';
 
 export default () => {
-    return async (ctx: Context, next: () => void) => {
+    return async (ctx: Context, next: () => Promise<void>) => {
         // 为ctx添加success、error和json通用方法, 所有方法默认status均为200
         Object.assign(ctx, {
             success(data: any, msg = 'success') {

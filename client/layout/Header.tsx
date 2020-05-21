@@ -5,7 +5,7 @@
 import UserDropdown from '@component/userDropdown';
 import { Layout, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
-import * as pathToRegexp from 'path-to-regexp';
+import { pathToRegexp } from 'path-to-regexp';
 import * as React from 'react';
 import { Link, Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ import Routes from '../routes';
 import UserStore from '../store/user';
 
 import styles from './index.less';
+
 const { Header } = Layout;
 
 interface InjectedProps extends RouteComponentProps<{}> {
@@ -68,7 +69,7 @@ class IUVHeader extends React.Component<InjectedProps, any> {
                         </Menu>
                     </div>
                     <div className={styles.right}>
-                        <UserDropdown theme="dark" visible={true} />
+                        <UserDropdown theme="dark" visible />
                     </div>
                 </div>
             </Header>

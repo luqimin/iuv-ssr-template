@@ -4,8 +4,9 @@
 
 import { Layout } from 'antd';
 import * as React from 'react';
-const { Footer } = Layout;
 import styles from './index.less';
+
+const { Footer } = Layout;
 
 interface Props {
     text?: React.ReactNode | string;
@@ -15,11 +16,7 @@ interface Props {
 class IUVFooter extends React.PureComponent<Props> {
     render() {
         const { text, fixBottom } = this.props;
-        return (
-            <Footer className={`${styles.footer} ${fixBottom ? styles.fixBottom : ''}`}>
-                {text || 'IUV'}
-            </Footer>
-        );
+        return <Footer className={`${styles.footer} ${fixBottom ? styles.fixBottom : ''}`}>{text || 'IUV'}</Footer>;
     }
 }
 

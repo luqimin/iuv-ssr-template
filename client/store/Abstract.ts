@@ -3,9 +3,9 @@ import { action, observable } from 'mobx';
 export default class AbstrctStore {
     @observable loaded: boolean = false;
 
-    @action init(...args: any[]) {
+    @action init() {
         if (this.loaded) {
-            return;
+            return Promise.resolve();
         }
         return Promise.resolve({});
     }

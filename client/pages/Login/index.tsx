@@ -6,8 +6,9 @@ import { LOGIN } from '@const/url';
 import IUVFooter from '@layout/Footer';
 import UserStore from '@store/user';
 import { post } from '@utils/fetch';
-import { Button, Checkbox, Form, Icon, Input, message } from 'antd';
-import { FormComponentProps } from 'antd/lib/form';
+import { Button, Checkbox, Form, Input, message } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { FormProps } from 'antd/lib/form';
 import { Location } from 'history';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
@@ -20,7 +21,7 @@ const FormItem = Form.Item;
 /**
  * 用户登录表单接口
  */
-interface UserFormProps extends FormComponentProps {
+interface UserFormProps extends FormProps {
     /**
      * 用户名
      */
@@ -38,7 +39,7 @@ interface UserFormProps extends FormComponentProps {
 /**
  * 组件Props接口
  */
-interface Props extends UserFormProps, RouteComponentProps<{ tag: string }> {
+interface Props extends UserFormProps, RouteComponentProps<{}, {}, { from?: Location }> {
     user: UserStore;
 }
 
@@ -50,36 +51,30 @@ class Login extends React.Component<Props> {
     /**
      * 登录
      */
-    handleSubmit = (e: React.FormEvent<any>) => {
-        e.preventDefault();
-        const { user, form, history } = this.props;
+    handleSubmit = (values: any) => {
+        const { user } = this.props;
+        this.setState({ submitting: true });
 
-        form.validateFields({ force: true }, (err, values) => {
-            if (!err) {
-                this.setState({ submitting: true });
-
-                // 用户登录
-                post(LOGIN, values)
-                    .then((res) => {
-                        if (res.code === 0) {
-                            message.success(res.msg || '登录成功', 1, () => {
-                                // 修改用户登录状态
-                                user.initData(res.data);
-                                // 登陆后页面跳转
-                                this.redirect();
-                            });
-                        } else {
-                            message.error(res.msg || '登陆失败');
-                        }
-                        this.setState({ submitting: false });
-                    })
-                    .catch((_err) => {
-                        message.error(`登陆失败: ${_err.message}`);
-                        this.setState({ submitting: false });
+        // 用户登录
+        post(LOGIN, values)
+            .then((res) => {
+                if (res.code === 0) {
+                    message.success(res.msg || '登录成功', 1, () => {
+                        // 修改用户登录状态
+                        user.initData(res.data);
+                        // 登陆后页面跳转
+                        this.redirect();
                     });
-            }
-        });
-    }
+                } else {
+                    message.error(res.msg || '登陆失败');
+                }
+                this.setState({ submitting: false });
+            })
+            .catch((_err) => {
+                message.error(`登陆失败: ${_err.message}`);
+                this.setState({ submitting: false });
+            });
+    };
 
     /**
      * 登陆后跳转页面
@@ -87,17 +82,14 @@ class Login extends React.Component<Props> {
     redirect = () => {
         const { location, history } = this.props;
         // 来源页面
-        const from: Location | undefined = location.state && location.state.from;
+        const from = location.state?.from;
 
         // 有来源页面，则跳转到来源页面, 没有来源页面，则跳转到首页
-        if (from) {
-            history.replace(from || '/');
-        }
-    }
+        from && history.replace(from as any);
+    };
 
     render() {
-        const { form, user, location } = this.props;
-        const { getFieldDecorator } = form;
+        const { user, location } = this.props;
         const { submitting } = this.state;
 
         // 用户是否登录
@@ -105,7 +97,7 @@ class Login extends React.Component<Props> {
 
         if (isLogin) {
             // 来源页面
-            const from: Location | undefined = location.state && location.state.from;
+            const from = location.state && location.state.from;
             return (
                 <Redirect
                     to={{
@@ -125,52 +117,34 @@ class Login extends React.Component<Props> {
                 </div>
 
                 <div className={styles.main}>
-                    <Form onSubmit={this.handleSubmit}>
-                        <FormItem>
-                            {getFieldDecorator('username', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: '请输入用户名',
-                                    },
-                                ],
-                            })(
-                                <Input
-                                    size="large"
-                                    prefix={<Icon type="user" className={styles.prefixIcon} />}
-                                    placeholder="用户名"
-                                />
-                            )}
+                    <Form name="login" onFinish={this.handleSubmit} initialValues={{ remember: true }}>
+                        <FormItem
+                            name="username"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: '请输入用户名',
+                                },
+                            ]}
+                        >
+                            <Input size="large" prefix={<UserOutlined className={styles.prefixIcon} />} placeholder="用户名" />
                         </FormItem>
-                        <FormItem>
-                            {getFieldDecorator('password', {
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: '请输入密码',
-                                    },
-                                ],
-                            })(
-                                <Input
-                                    size="large"
-                                    prefix={<Icon type="lock" className={styles.prefixIcon} />}
-                                    type="password"
-                                    placeholder="密码"
-                                />
-                            )}
+                        <FormItem
+                            name="password"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: '请输入密码',
+                                },
+                            ]}
+                        >
+                            <Input.Password size="large" prefix={<LockOutlined className={styles.prefixIcon} />} placeholder="密码" />
+                        </FormItem>
+                        <FormItem className={styles.additional} name="remember" valuePropName="checked">
+                            <Checkbox className={styles.autoLogin}>自动登录</Checkbox>
                         </FormItem>
                         <FormItem className={styles.additional}>
-                            {getFieldDecorator('remember', {
-                                valuePropName: 'checked',
-                                initialValue: true,
-                            })(<Checkbox className={styles.autoLogin}>自动登录</Checkbox>)}
-                            <Button
-                                size="large"
-                                loading={submitting}
-                                className={styles.submit}
-                                type="primary"
-                                htmlType="submit"
-                            >
+                            <Button size="large" loading={submitting} className={styles.submit} type="primary" htmlType="submit">
                                 登录
                             </Button>
                         </FormItem>
@@ -182,6 +156,4 @@ class Login extends React.Component<Props> {
     }
 }
 
-const WrappedLoginForm = Form.create()(Login);
-
-export default WrappedLoginForm;
+export default Login;

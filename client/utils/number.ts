@@ -4,10 +4,5 @@
  * @returns - 格式化结果
  */
 export const thousandth = (num: number): string | 0 => {
-    return (
-        num &&
-        num.toString().replace(/\d+/, function (s) {
-            return s.replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-        })
-    );
+    return num?.toString().replace(/\d+/, (s) => s.replace(/(\d)(?=(\d{3})+$)/g, '$1,'));
 };

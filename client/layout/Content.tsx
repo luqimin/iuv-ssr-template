@@ -2,15 +2,16 @@
  * 页面主要内容
  */
 
-import { Breadcrumb, Icon, Layout } from 'antd';
+import { Layout } from 'antd';
 import * as React from 'react';
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
-const { Content } = Layout;
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import Routes from '../routes';
 
 import styles from './index.less';
 
-const breadcrumbNameMap: { [key: string]: string } = {};
+const { Content } = Layout;
+
+const breadcrumbNameMap: { [key: string]: String } = {};
 Routes.forEach((route) => {
     breadcrumbNameMap[route.path] = route.name;
 });
@@ -22,9 +23,7 @@ class IUVContent extends React.PureComponent<RouteComponentProps<{}>, any> {
         return (
             <Content className={styles.content}>
                 <div className={styles.contentWrap}>
-                    <Layout className={styles.main}>
-                        {children}
-                    </Layout>
+                    <Layout className={styles.main}>{children}</Layout>
                 </div>
             </Content>
         );

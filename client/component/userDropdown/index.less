@@ -18,7 +18,7 @@
             background-color: #424859;
 
             :hover {
-                background-color: rgba(0, 0, 0, .1);
+                background-color: rgba(0, 0, 0, 0.1);
             }
         }
     }
@@ -30,8 +30,8 @@
     }
 
     .username {
-        margin-right: 8px;
         display: inline-block;
+        margin-right: 8px;
     }
 }
 
@@ -41,14 +41,14 @@
 }
 
 .menu {
+    border-radius: 0;
     padding: 0;
     text-align: center;
-    border-radius: 0;
 
     :global {
         .ant-dropdown-menu-item,
         .ant-dropdown-menu-submenu-title {
-            padding: 12px 12px;
+            padding: 12px;
         }
     }
 
@@ -58,32 +58,32 @@
 
         :hover {
             color: #c7c9cf !important;
-            background-color: rgba(0, 0, 0, .1);
+            background-color: rgba(0, 0, 0, 0.1);
         }
     }
 }
 
 .logo {
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 43px;
     height: 60px;
-    line-height: 60px;
     font-size: 40px;
+    line-height: 60px;
     text-align: center;
     color: #6f6f6f;
+    justify-content: center;
+    align-items: center;
 
     .img {
-        margin-right: 8px;
         display: inline-block;
+        margin-right: 8px;
         width: 60px;
         height: 60px;
-        background-image: url("../../assets/homelogo.png");
+        background-image: url('../../assets/homelogo.png');
         background-image: image-set(
-            url("../../assets/homelogo.png") 1x,
-            url("../../assets/homelogo@2x.png") 2x,
-            url("../../assets/homelogo@3x.png") 3x
+            url('../../assets/homelogo.png') 1x,
+            url('../../assets/homelogo@2x.png') 2x,
+            url('../../assets/homelogo@3x.png') 3x
         );
         background-size: cover;
     }
