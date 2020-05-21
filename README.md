@@ -33,9 +33,7 @@ npm run build
     ```json
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
-        // For ESLint
         "source.fixAll.eslint": true,
-        // For Stylelint
         "source.fixAll.stylelint": true
     }
     ```
