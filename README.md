@@ -16,3 +16,26 @@ npm start
 # 编译 client + server 文件
 npm run build
 ```
+
+### 推荐开发工具
+
+- IDE
+
+    Visual Studio Code
+
+- VS Code 插件
+
+    - esbenp.prettier-vscode
+    - dbaeumer.vscode-eslint
+    - stylelint.vscode-stylelint
+
+- VS Code 配置
+    ```json
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        // For ESLint
+        "source.fixAll.eslint": true,
+        // For Stylelint
+        "source.fixAll.stylelint": true
+    }
+    ```
