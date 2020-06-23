@@ -44,6 +44,17 @@ declare interface GLOBAL_USER extends BASE {
  * 页面全局变量
  */
 declare interface Window {
+    /**
+     * 运行环境
+     */
+    ENV: 'local' | 'test' | 'prod';
+    /**
+     * 网站名
+     */
+    SITE_NAME: string;
+    /**
+     * 初始化状态, ssr使用
+     */
     INITIAL_STATE: {
         user?: { loaded: boolean; data: GLOBAL_USER };
     };

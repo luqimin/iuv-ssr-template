@@ -6,9 +6,11 @@ import { Layout, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { pathToRegexp } from 'path-to-regexp';
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 
 import UserDropdown from '@component/userDropdown';
+import PageStore from '@store/page';
 
 import Routes from '../routes';
 import UserStore from '../store/user';
@@ -18,13 +20,15 @@ const { Header } = Layout;
 
 interface InjectedProps extends RouteComponentProps<{}> {
     user?: UserStore;
+    page?: PageStore;
 }
 
 @inject('user')
+@inject('page')
 @observer
 class IUVHeader extends React.Component<InjectedProps, any> {
     render() {
-        const { user, location } = this.props;
+        const { user, page, location } = this.props;
         const userinfo = user && user.data!;
 
         if (!userinfo) {
@@ -33,16 +37,21 @@ class IUVHeader extends React.Component<InjectedProps, any> {
 
         // 获取当前menu选中key
         let selectedKey: string = '';
+        let pageTitle = 'IUV';
         for (let i = 0; i < Routes.length; i++) {
             const route = Routes[i];
             if (pathToRegexp(route.path).test(location.pathname)) {
                 selectedKey = route.menuKey;
+                pageTitle = `IUV - ${page!.data.pageName || route.name}`;
                 break;
             }
         }
 
         return (
             <Header className={styles.header}>
+                <Helmet>
+                    <title>{pageTitle}</title>
+                </Helmet>
                 <div className={styles.wrap}>
                     <div className={styles.left}>
                         <Link className={styles.logo} to="/">

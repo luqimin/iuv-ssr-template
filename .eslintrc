@@ -20,11 +20,12 @@
             }
         ],
         "max-lines": ["error", 500],
-        "import/prefer-default-export": 0,
         "no-plusplus": 0,
         "no-underscore-dangle": 0,
         "class-methods-use-this": 0,
+        "one-var": 0,
         // import规则
+        "import/prefer-default-export": 0,
         "import/order": [
             "error",
             {

@@ -7,6 +7,7 @@ import { FormProps } from 'antd/lib/form';
 import { Location } from 'history';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import { Redirect, RouteComponentProps } from 'react-router-dom';
 
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
@@ -110,6 +111,9 @@ class Login extends React.Component<Props> {
 
         return (
             <div className={styles.container}>
+                <Helmet>
+                    <title>登录</title>
+                </Helmet>
                 <div className={styles.top}>
                     <div className={styles.header}>
                         <span className={styles.title}>IUV Web App</span>

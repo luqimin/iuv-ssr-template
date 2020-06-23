@@ -71,6 +71,7 @@ export default async (ctx: Context, context: any, rootStore: any, fetchStore: { 
 
     return {
         html: ReactDOMServer.renderToString(jsx),
+        helmet: Helmet.renderStatic(),
         // stream: ReactDOMServer.renderToNodeStream(jsx),
 
         // 获取静态资源
