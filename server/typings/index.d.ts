@@ -1,11 +1,8 @@
 import 'egg';
-import { Session } from 'koa-session';
 
 declare module 'egg' {
     interface Context {
-        session: Session & {
-            userinfo?: GLOBAL_USER;
-        };
+        session: { userinfo: GLOBAL_USER } | any;
 
         /**
          * 请求成功方法

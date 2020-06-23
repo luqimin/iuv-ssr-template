@@ -1,13 +1,16 @@
-import { ChunkExtractor } from '@loadable/server';
+import * as path from 'path';
+
 import { Context } from 'egg';
 import { find } from 'lodash';
 import { toJS } from 'mobx';
 import { Provider } from 'mobx-react';
-import * as path from 'path';
 import { pathToRegexp } from 'path-to-regexp';
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
+import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router';
+
+import { ChunkExtractor } from '@loadable/server';
 
 // 引入mobx数据状态库
 import Main from './pages/Main';
@@ -40,14 +43,14 @@ export default async (ctx: Context, context: any, rootStore: any, fetchStore: { 
     // 初始化所有的store
     const fetchStorePromises = preFetchStores.map((s) => {
         const key = s.name;
-        const _store = stores[key];
-        return _store ? fetchStore[key]?.(s.param) || Promise.resolve(null) : Promise.resolve(null);
+        const store = stores[key];
+        return store ? fetchStore[key]?.(s.param) || Promise.resolve(null) : Promise.resolve(null);
     });
     const fetchRes = await Promise.all(fetchStorePromises);
     preFetchStores.forEach((s, i) => {
         const key = s.name;
-        const _store = stores[key];
-        _store?.initData(fetchRes[i].data, s.param);
+        const store = stores[key];
+        store?.initData(fetchRes[i].data, s.param);
     });
 
     Object.assign(rootStore, toJS(stores));

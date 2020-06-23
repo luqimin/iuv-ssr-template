@@ -1,3 +1,7 @@
+/**
+ * 建议使用 egg => app.config.env 判断
+ */
+
 export const env: string = process.env.NODE_ENV || 'development';
 
 /**

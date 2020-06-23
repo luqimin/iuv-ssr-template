@@ -1,8 +1,9 @@
-import UserStore from '@store/user';
 import { Alert, BackTop, Button, Layout } from 'antd';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 import { Redirect, Route, RouteComponentProps } from 'react-router-dom';
+
+import UserStore from '@store/user';
 
 import IUVContent from '../layout/Content';
 import IUVFooter from '../layout/Footer';

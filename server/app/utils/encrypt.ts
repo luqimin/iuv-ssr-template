@@ -13,7 +13,4 @@ export const encryptPassword = (password: string, salt: string): string => {
     return result;
 };
 
-export const createRandomString = (): string =>
-    Math.random()
-        .toString(36)
-        .substr(2);
+export const createRandomString = (): string => Math.random().toString(36).substr(2);

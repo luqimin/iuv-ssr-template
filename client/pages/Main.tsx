@@ -4,11 +4,13 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import ScrollMemory from 'react-router-scroll-memory';
 
+// 路由
 import Routes from '../routes';
-import '../style/global.less';
-
 import Auth from './Auth';
 import Exception from './Exception';
+
+// 全局样式
+import '../style/global.less';
 
 export default () => (
     <ConfigProvider locale={zhCN}>

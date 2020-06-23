@@ -2,11 +2,12 @@
  * 页面头部用户下拉菜单
  */
 
-import UserStore from '@store/user';
 import { Avatar, Dropdown, Menu } from 'antd';
-import { LogoutOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
+
+import { LogoutOutlined, CaretDownOutlined } from '@ant-design/icons';
+import UserStore from '@store/user';
 
 import styles from './index.less';
 

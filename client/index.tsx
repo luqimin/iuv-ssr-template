@@ -1,9 +1,10 @@
 import '@babel/polyfill';
-import { loadableReady } from '@loadable/component';
 import { Provider } from 'mobx-react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+
+import { loadableReady } from '@loadable/component';
 
 // 引入mobx数据状态库
 import Main from './pages/Main';

@@ -5,8 +5,8 @@
 import { Layout } from 'antd';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import Routes from '../routes';
 
+import Routes from '../routes';
 import styles from './index.less';
 
 const { Content } = Layout;

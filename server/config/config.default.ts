@@ -1,6 +1,7 @@
+import * as path from 'path';
+
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 import * as fs from 'fs-extra';
-import * as path from 'path';
 
 // 网站favicon文件地址
 const favicon = fs.readFileSync(path.join(__dirname, '../favicon.ico'));
@@ -14,7 +15,7 @@ export default (appInfo: EggAppInfo) => {
             watchDirs: ['ssr'],
         },
 
-        keys: 'iuv,keys',
+        keys: `iuv,keys,${appInfo.name}`,
 
         security: {
             csrf: {

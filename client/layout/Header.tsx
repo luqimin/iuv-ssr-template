@@ -2,16 +2,16 @@
  * 页面通用头
  */
 
-import UserDropdown from '@component/userDropdown';
 import { Layout, Menu } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { pathToRegexp } from 'path-to-regexp';
 import * as React from 'react';
 import { Link, Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 
+import UserDropdown from '@component/userDropdown';
+
 import Routes from '../routes';
 import UserStore from '../store/user';
-
 import styles from './index.less';
 
 const { Header } = Layout;

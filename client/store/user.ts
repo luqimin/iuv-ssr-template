@@ -2,9 +2,10 @@
  * 用户
  */
 
+import { observable } from 'mobx';
+
 import { LOGOUT } from '@const/url';
 import { get } from '@utils/fetch';
-import { observable } from 'mobx';
 
 import Abstract from './Abstract';
 

@@ -1,7 +1,8 @@
-import UserStore from '@store/user';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+
+import UserStore from '@store/user';
 
 import styles from './index.less';
 

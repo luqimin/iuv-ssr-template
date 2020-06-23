@@ -4,6 +4,7 @@
 
 import { Layout } from 'antd';
 import * as React from 'react';
+
 import styles from './index.less';
 
 const { Footer } = Layout;

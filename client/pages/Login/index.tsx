@@ -2,17 +2,18 @@
  * 登录页面
  */
 
-import { LOGIN } from '@const/url';
-import IUVFooter from '@layout/Footer';
-import UserStore from '@store/user';
-import { post } from '@utils/fetch';
 import { Button, Checkbox, Form, Input, message } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { FormProps } from 'antd/lib/form';
 import { Location } from 'history';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 import { Redirect, RouteComponentProps } from 'react-router-dom';
+
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { LOGIN } from '@const/url';
+import IUVFooter from '@layout/Footer';
+import UserStore from '@store/user';
+import { post } from '@utils/fetch';
 
 import styles from './index.less';
 
@@ -70,8 +71,8 @@ class Login extends React.Component<Props> {
                 }
                 this.setState({ submitting: false });
             })
-            .catch((_err) => {
-                message.error(`登陆失败: ${_err.message}`);
+            .catch((err) => {
+                message.error(`登陆失败: ${err.message}`);
                 this.setState({ submitting: false });
             });
     };

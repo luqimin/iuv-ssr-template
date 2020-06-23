@@ -2,7 +2,7 @@ import { Context } from 'egg';
 
 export default () => {
     return async (ctx: Context, next: () => Promise<void>) => {
-        const url = ctx.url;
+        const { url } = ctx;
         const user = ctx.session.userinfo;
 
         if (/^\/auth/.test(url)) {

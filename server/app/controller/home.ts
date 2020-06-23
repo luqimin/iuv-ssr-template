@@ -1,8 +1,7 @@
 import { Controller } from 'egg';
-import * as _ from 'lodash';
 import { StaticRouterContext } from 'react-router';
 
-import { isDevelopment, isProduction, isTesting } from '../const/env';
+import { isDevelopment } from '../const/env';
 
 /* tslint:disable */
 // iuv动态生成的文件
@@ -11,7 +10,7 @@ const SSR = require('../../ssr/app');
 
 export default class HomeController extends Controller {
     async render() {
-        const { ctx, app, service } = this;
+        const { ctx } = this;
 
         const context: StaticRouterContext = {};
         const rootStore = {};
@@ -58,7 +57,7 @@ export default class HomeController extends Controller {
     async getUser() {
         const { ctx } = this;
         return {
-            code: !!ctx.session.userinfo ? 0 : -1,
+            code: ctx.session.userinfo ? 0 : -1,
             data: ctx.session.userinfo,
         };
     }

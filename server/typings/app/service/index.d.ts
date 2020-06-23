@@ -5,7 +5,7 @@ import 'egg';
 import ExportTest from '../../../app/service/test';
 
 declare module 'egg' {
-  interface IService {
-    test: ExportTest;
-  }
+    interface IService {
+        test: ExportTest;
+    }
 }

@@ -1,6 +1,7 @@
-import loadable from '@loadable/component';
 import { Spin } from 'antd';
 import * as React from 'react';
+
+import loadable from '@loadable/component';
 
 const Loading = () => (
     <div style={{ width: '100%', minHeight: 300, marginTop: 100, padding: 30, textAlign: 'center' }}>

@@ -9,12 +9,17 @@ export default class UserController extends Controller {
      * 登录
      */
     async login() {
-        const { ctx, app, service } = this;
+        const { ctx } = this;
 
         try {
             let { username, password } = ctx.request.body;
             username = username.trim();
             password = password.trim();
+
+            if (!username || !password) {
+                ctx.error(100, '请输入账号或密码');
+                return;
+            }
 
             const userinfo: GLOBAL_USER = {
                 userid: username,
