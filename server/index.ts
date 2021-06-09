@@ -8,5 +8,5 @@ startCluster(
     },
     () => {
         console.log('web server started');
-    }
+    },
 );

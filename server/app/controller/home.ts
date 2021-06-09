@@ -3,10 +3,9 @@ import { StaticRouterContext } from 'react-router';
 
 import { isDevelopment } from '../const/env';
 
-/* tslint:disable */
 // iuv动态生成的文件
+// eslint-disable-next-line import/extensions
 const SSR = require('../../ssr/app');
-/* tslint:enable */
 
 export default class HomeController extends Controller {
     async render() {

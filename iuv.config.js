@@ -23,7 +23,7 @@ module.exports = {
     /**
      * 兼容浏览器列表
      */
-    browsers: ['chrome >= 50', 'ff >= 50', 'IE >= 9', 'ios >= 10', 'safari >= 10', 'android >= 6.0'],
+    browsers: ['chrome >= 50', 'safari >= 10'],
 
     /**
      * 覆盖iuv默认 webpack dllPlugin vendors 配置
@@ -34,16 +34,19 @@ module.exports = {
      * less变量替换 modifyVars配置
      */
     lessModifyVars: {
-        '@page-width': '1200px',
+        '@page-width': '1800px',
         '@primary-color': '#fa7241',
         '@info-color': '#fa7241',
         '@processing-color': '#56a9ff',
         '@red-6': '#f75451',
         '@gold-6': '#fd9626',
         '@body-background': '#f1f3f5',
+        '@lightFontColor': '#979eb1',
+        '@darkFontColor': '#d0b8a8',
         '@layout-body-background': '#f1f3f5',
         '@layout-header-background': '#424859',
         '@border-color-split': '#e8e8e8',
+        '@card-shadow': '0 8px 8px rgba(10,16,20,.24), 0 0 8px rgba(10,16,20,.12)',
     },
 
     /**

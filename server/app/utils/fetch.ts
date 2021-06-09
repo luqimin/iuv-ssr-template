@@ -55,7 +55,7 @@ axios.interceptors.response.use(
             console.error(`请求失败：${error.message}`);
         }
         return Promise.reject(error);
-    }
+    },
 );
 
 export default axios;

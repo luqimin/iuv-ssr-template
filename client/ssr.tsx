@@ -1,12 +1,12 @@
-import * as path from 'path';
+import path from 'path';
 
 import { Context } from 'egg';
 import { find } from 'lodash';
 import { toJS } from 'mobx';
 import { Provider } from 'mobx-react';
 import { pathToRegexp } from 'path-to-regexp';
-import * as React from 'react';
-import * as ReactDOMServer from 'react-dom/server';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router';
 

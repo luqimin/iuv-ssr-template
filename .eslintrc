@@ -22,8 +22,27 @@
         "max-lines": ["error", 500],
         "no-plusplus": 0,
         "no-underscore-dangle": 0,
+        "no-param-reassign": ["error", { "props": false }],
         "class-methods-use-this": 0,
         "one-var": 0,
+        "consistent-return": 0,
+        "no-restricted-globals": 0,
+        "prefer-const": [
+            "error",
+            {
+                "destructuring": "all",
+                "ignoreReadBeforeAssign": true
+            }
+        ],
+        "no-empty": ["warn", { "allowEmptyCatch": true }],
+        // prettier
+        "prettier/prettier": [
+            "error",
+            { "singleQuote": true, "trailingComma": "all" },
+            {
+                "usePrettierrc": true
+            }
+        ],
         // import规则
         "import/prefer-default-export": 0,
         "import/order": [
@@ -42,7 +61,7 @@
                 "pathGroupsExcludedImportTypes": ["builtin"]
             }
         ],
-        "import/no-extraneous-dependencies": ["warn", { "packageDir": ["./"] }],
+        "import/no-extraneous-dependencies": 0,
         // react规则
         "react/jsx-indent": ["error", 4],
         "react/destructuring-assignment": 0,
@@ -51,12 +70,20 @@
         "react/state-in-constructor": 0,
         "react/jsx-wrap-multilines": 0,
         "react/jsx-curly-newline": 0,
-        // Accessibility规则, 需增强可访问性需要讲一下规则打开
+        "react/prop-types": 0,
+        "react-hooks/exhaustive-deps": 0,
+        "react/require-default-props": 0,
+        "react/jsx-one-expression-per-line": 0,
+        // Accessibility规则, 需增强可访问性需要将一下规则打开
         "jsx-a11y/click-events-have-key-events": 0,
         "jsx-a11y/no-static-element-interactions": 0,
         "jsx-a11y/anchor-is-valid": 0,
+        "jsx-a11y/media-has-caption": 0,
+        "jsx-a11y/alt-text": 0,
+        "jsx-a11y/no-noninteractive-element-interactions": 0,
+        "jsx-a11y/mouse-events-have-key-events": 0,
         // ts规则
-        "@typescript-eslint/indent": ["error", 4],
+        "@typescript-eslint/indent": 0,
         "@typescript-eslint/naming-convention": [
             "error",
             { "selector": "variableLike", "format": ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"] }

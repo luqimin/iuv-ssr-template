@@ -2,61 +2,66 @@
  * 页面头部用户下拉菜单
  */
 
+import { useStores } from '@store';
 import { Avatar, Dropdown, Menu } from 'antd';
-import { inject, observer } from 'mobx-react';
-import * as React from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { LogoutOutlined, CaretDownOutlined } from '@ant-design/icons';
-import UserStore from '@store/user';
 
 import styles from './index.less';
 
 interface Props {
-    user?: UserStore;
     theme?: 'light' | 'dark';
-    visible: boolean;
-    onChange?(value: boolean): void;
 }
 
-@inject('user')
-@observer
-export default class UserDropdown extends React.Component<Props> {
-    /**
-     * 菜单dropdown点击
-     */
-    handleUserMenuClick = ({ key }: { [key: string]: any }) => {
+const UserDropdown = (props: Props) => {
+    const { theme = 'light' } = props;
+    const history = useHistory();
+    const { user } = useStores();
+
+    // 登录页面
+    const handleLogin = () => {
+        history.replace('/login');
+    };
+    const handleUserMenuClick = ({ key }: { [key: string]: any }) => {
+        // 退出账号
         if (key === 'logout') {
-            this.props.user!.logout();
+            user.logout();
         }
     };
 
-    render() {
-        const { user, theme = 'light' } = this.props;
-        const userinfo = user && user.data!;
+    const userinfo = user && user.data;
 
-        if (!userinfo) {
-            return '';
-        }
-
-        const menu = (
-            <Menu className={`${styles.menu} ${styles[theme]}`} theme={theme} onClick={this.handleUserMenuClick}>
-                <Menu.Item key="logout">
-                    <LogoutOutlined />
-                    退出登录
-                </Menu.Item>
-            </Menu>
-        );
-
+    if (!userinfo) {
         return (
             <div className={`${styles.wrap} ${styles[theme]}`}>
-                <Dropdown overlay={menu} placement="bottomRight" overlayClassName={styles.dropdown}>
-                    <span className={styles.account}>
-                        <Avatar size="small" className={styles.avatar} src={userinfo.avatar} />
-                        <span className={styles.username}>{userinfo.username || userinfo.userid}</span>
-                        <CaretDownOutlined />
-                    </span>
-                </Dropdown>
+                <div className={styles.btn}>
+                    <a onClick={handleLogin}>登录</a>
+                </div>
             </div>
         );
     }
-}
+
+    const menu = (
+        <Menu className={`${styles.menu} ${styles[theme]}`} theme={theme} onClick={handleUserMenuClick}>
+            <Menu.Item key="logout" className={styles.menuItem} icon={<LogoutOutlined />}>
+                退出登录
+            </Menu.Item>
+        </Menu>
+    );
+
+    return (
+        <div className={`${styles.wrap} ${styles[theme]}`}>
+            <Dropdown overlay={menu} placement="bottomRight" overlayClassName={styles.dropdown}>
+                <span className={styles.account}>
+                    <Avatar size="small" className={styles.avatar} src={userinfo.avatar} />
+                    <span className={styles.username}>{userinfo.username || userinfo.userid}</span>
+                    <CaretDownOutlined />
+                </span>
+            </Dropdown>
+        </div>
+    );
+};
+
+export default UserDropdown;

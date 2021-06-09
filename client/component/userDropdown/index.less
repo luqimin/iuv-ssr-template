@@ -1,5 +1,4 @@
-@lightFontColor: #979eb1;
-@darkFontColor: #c7c9cf;
+@import '~antd/lib/style/themes/default.less';
 
 .wrap {
     display: flex;
@@ -45,47 +44,14 @@
     padding: 0;
     text-align: center;
 
-    :global {
-        .ant-dropdown-menu-item,
-        .ant-dropdown-menu-submenu-title {
-            padding: 12px;
-        }
+    .menuItem {
+        padding: 12px;
     }
 
     &.dark {
-        color: #c7c9cf;
-        background-color: #424859;
-
         :hover {
-            color: #c7c9cf !important;
-            background-color: rgba(0, 0, 0, 0.1);
+            color: @darkFontColor !important;
         }
-    }
-}
-
-.logo {
-    display: flex;
-    margin-bottom: 43px;
-    height: 60px;
-    font-size: 40px;
-    line-height: 60px;
-    text-align: center;
-    color: #6f6f6f;
-    justify-content: center;
-    align-items: center;
-
-    .img {
-        display: inline-block;
-        margin-right: 8px;
-        width: 60px;
-        height: 60px;
-        background-image: url('../../assets/homelogo.png');
-        background-image: image-set(
-            url('../../assets/homelogo.png') 1x,
-            url('../../assets/homelogo@2x.png') 2x,
-            url('../../assets/homelogo@3x.png') 3x
-        );
-        background-size: cover;
     }
 }
 

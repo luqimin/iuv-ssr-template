@@ -14,6 +14,7 @@
 .wrap {
     display: flex;
     margin: auto;
+    padding: 0 20px;
     width: 100%;
     max-width: @page-width;
     height: @layout-header-height;
@@ -49,6 +50,7 @@
 .contentWrap {
     display: flex;
     margin: auto;
+    padding: 0 20px;
     width: 100%;
     max-width: @page-width;
     flex-direction: column;
@@ -107,31 +109,6 @@
         background-image: url('../assets/logo.png');
         background-image: image-set(url('../assets/logo.png') 1x, url('../assets/logo@2x.png') 2x, url('../assets/logo@3x.png') 3x);
         background-size: cover;
-    }
-}
-
-.user {
-    float: right;
-    height: 100%;
-
-    .action {
-        display: inline-block;
-        margin-left: 12px;
-        transition: all 0.3s;
-        cursor: pointer;
-
-        > i {
-            font-size: 16px;
-            vertical-align: middle;
-        }
-    }
-
-    .avatar {
-        margin-right: 10px;
-    }
-
-    .username {
-        margin-right: 8px;
     }
 }
 

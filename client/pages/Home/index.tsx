@@ -1,32 +1,21 @@
-import { inject, observer } from 'mobx-react';
-import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-
-import UserStore from '@store/user';
+import { useStores } from '@store';
+import React from 'react';
 
 import styles from './index.less';
 
-interface Props extends RouteComponentProps<{ tag: string }> {
-    user: UserStore;
-}
+const Home = () => {
+    const { user } = useStores();
+    const account = user.data || {};
 
-@inject('user')
-@observer
-class Home extends React.Component<Props> {
-    render() {
-        const account = this.props.user.data || {};
-        return (
-            <div className={styles.container}>
-                <div className={styles.main}>
-                    <p>下了一整夜的雨, 早起就是好天气</p>
-                    <p>
-                        用户信息:
-                        {JSON.stringify(account)}
-                    </p>
-                </div>
+    return (
+        <div className={styles.container}>
+            <div className={styles.main}>
+                <p>下了一整夜的雨, 早起就是好天气</p>
+                <p>欢迎你大兄弟</p>
+                <pre>{JSON.stringify(account, undefined, 4)}</pre>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default Home;

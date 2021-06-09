@@ -1,7 +1,6 @@
-import '@babel/polyfill';
 import { Provider } from 'mobx-react';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { loadableReady } from '@loadable/component';
@@ -19,6 +18,6 @@ loadableReady(() => {
                 <Main />
             </Router>
         </Provider>,
-        document.getElementById('app')
+        document.getElementById('app'),
     );
 });

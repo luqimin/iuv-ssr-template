@@ -2,7 +2,7 @@
  * 页面信息
  */
 
-import { observable } from 'mobx';
+import { action, makeObservable, observable } from 'mobx';
 
 import Abstract from './Abstract';
 
@@ -18,7 +18,15 @@ interface PAGE_PROPS {
 }
 
 export default class PageStore extends Abstract {
-    @observable data: PAGE_PROPS = { pageName: '' };
+    data: PAGE_PROPS = { pageName: '' };
+
+    constructor() {
+        super();
+        makeObservable(this, {
+            data: observable,
+            setData: action,
+        });
+    }
 
     setData(data: PAGE_PROPS) {
         if (data) {

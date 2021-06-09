@@ -2,7 +2,7 @@
  * 用户
  */
 
-import { observable } from 'mobx';
+import { action, runInAction, makeObservable, observable } from 'mobx';
 
 import { LOGOUT } from '@const/url';
 import { get } from '@utils/fetch';
@@ -10,10 +10,15 @@ import { get } from '@utils/fetch';
 import Abstract from './Abstract';
 
 export default class UserStore extends Abstract {
-    @observable data: GLOBAL_USER | null = null;
+    data: GLOBAL_USER | null = null;
 
     constructor(data?: { data: GLOBAL_USER; loaded: boolean }) {
         super();
+        makeObservable(this, {
+            data: observable,
+            initData: action,
+            logout: action,
+        });
         data?.loaded && this.initData(data.data);
     }
 
@@ -27,8 +32,10 @@ export default class UserStore extends Abstract {
     async logout() {
         const res = await get(LOGOUT);
         if (res && res.code === 0) {
-            this.data = null;
-            this.loaded = false;
+            runInAction(() => {
+                this.data = null;
+                this.loaded = false;
+            });
         }
     }
 }

@@ -14,11 +14,9 @@ interface Props {
     fixBottom?: boolean;
 }
 
-class IUVFooter extends React.PureComponent<Props> {
-    render() {
-        const { text, fixBottom } = this.props;
-        return <Footer className={`${styles.footer} ${fixBottom ? styles.fixBottom : ''}`}>{text || 'IUV'}</Footer>;
-    }
-}
+const IUVFooter = (props: Props) => {
+    const { text, fixBottom } = props;
+    return <Footer className={`${styles.footer} ${fixBottom ? styles.fixBottom : ''}`}>{text || 'IUV'}</Footer>;
+};
 
 export default IUVFooter;

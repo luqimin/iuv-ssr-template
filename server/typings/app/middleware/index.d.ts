@@ -6,8 +6,8 @@ import ExportAuth from '../../../app/middleware/auth';
 import ExportContext from '../../../app/middleware/context';
 
 declare module 'egg' {
-    interface IMiddleware {
-        auth: typeof ExportAuth;
-        context: typeof ExportContext;
-    }
+  interface IMiddleware {
+    auth: typeof ExportAuth;
+    context: typeof ExportContext;
+  }
 }

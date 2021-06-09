@@ -1,5 +1,6 @@
 import { message } from 'antd';
 import OriginAxios from 'axios';
+import { useState, useEffect, DependencyList } from 'react';
 
 // 为axios配置超时时长
 const axios = OriginAxios.create({
@@ -61,6 +62,52 @@ export function deleteAxios<D = any>(url: string, data?: any) {
     });
 }
 
+export const useProgressFetch = <D = any>(
+    {
+        func,
+        url,
+        params,
+        initialData,
+        pause,
+    }: {
+        func: (url: string, params?: any) => Promise<GLOBAL_RESPONSE<D>>;
+        url: string;
+        params?: any;
+        initialData?: D; // 初始数据
+        pause?: boolean; // 停止发送请求
+    },
+    deps: DependencyList,
+): [D | undefined, boolean, React.Dispatch<React.SetStateAction<D | undefined>>] => {
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState<D | undefined>(initialData);
+    useEffect(() => {
+        if (pause) return;
+        const isNode: boolean = typeof process === 'object';
+        const Msg: {
+            /**
+             * 错误提示
+             * @param m 错误文案
+             */
+            error(m: string): void;
+        } = isNode ? console : message;
+        setLoading(true);
+        func(url, params)
+            .then((res) => {
+                setLoading(false);
+                if (res.code === 0) {
+                    setData(res.data);
+                } else {
+                    Msg.error(res.err || '请求失败，请稍后再试');
+                }
+            })
+            .catch((error) => {
+                setLoading(false);
+                Msg.error(error.message);
+            });
+    }, deps);
+    return [data, loading, setData];
+};
+
 // 返回状态判断(添加响应拦截器)
 axios.interceptors.response.use(
     (res) => {
@@ -85,7 +132,7 @@ axios.interceptors.response.use(
             Msg.error(`请求失败：${error.message}`);
         }
         return Promise.reject(error);
-    }
+    },
 );
 
 export default axios;

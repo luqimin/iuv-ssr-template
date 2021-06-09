@@ -1,18 +1,20 @@
-import { action, observable } from 'mobx';
+import { action, makeObservable, observable } from 'mobx';
 
 export default class AbstrctStore {
-    @observable loaded: boolean = false;
+    loaded: boolean = false;
 
-    @action init() {
-        if (this.loaded) {
-            return Promise.resolve();
-        }
-        return Promise.resolve({});
+    constructor() {
+        makeObservable(this, {
+            loaded: observable,
+            init: action,
+        });
     }
 
-    initData(data: any) {
-        if (data) {
-            this.loaded = true;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    init(...args: any[]): Promise<any> | undefined {
+        if (this.loaded) {
+            return;
         }
+        return Promise.resolve({});
     }
 }

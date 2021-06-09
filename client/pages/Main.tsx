@@ -1,8 +1,10 @@
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
-import * as React from 'react';
+import dayjs from 'dayjs';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import ScrollMemory from 'react-router-scroll-memory';
+import 'dayjs/locale/zh-cn';
 
 // 路由
 import Routes from '../routes';
@@ -11,6 +13,8 @@ import Exception from './Exception';
 
 // 全局样式
 import '../style/global.less';
+
+dayjs.locale('zh-cn');
 
 export default () => (
     <ConfigProvider locale={zhCN}>

@@ -17,7 +17,7 @@
         "max-nesting-depth": 3,
         "number-leading-zero": "always",
         "number-no-trailing-zeros": true,
-        "selector-max-id": 0,
+        "selector-max-id": 2,
         "comment-empty-line-before": [
             "always",
             {

@@ -6,15 +6,13 @@ interface Props {
     testProp?: string;
 }
 
-class Test extends React.PureComponent<Props, any> {
-    render() {
-        return (
-            <div className={styles.container}>
-                TEST:
-                {this.props.testProp || '~~~'}
-            </div>
-        );
-    }
-}
+const Test = (props: Props) => {
+    return (
+        <div className={styles.container}>
+            TEST:
+            {props.testProp || '~~~'}
+        </div>
+    );
+};
 
 export default Test;
